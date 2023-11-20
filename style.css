@@ -1,0 +1,79 @@
+body{
+    background-image: url("img/bg1.jpg");
+}
+
+footer{
+  font-family: arial;
+  font-size: 13px;
+  color:black;
+}
+.button{
+    background-color: navy;
+    border: none;
+    color:white;
+    padding:15px 32 px;
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    transition-duration: 0.5s;
+    cursor: pointer;    
+}
+
+.button1{
+    background-color: darkcyan;
+    color:black;
+    border:2px solid grey;
+}
+
+.button1:hover{
+    background-color:violet;
+    color:white;
+}
+
+#myJob{
+    margin: 2px;
+    width:30rem;
+    border-radius: 10px;
+    background-color: rgb(153, 200, 238);
+    text-align: left;
+    color:navy;
+}
+
+#ville{
+    color:white;
+}
+
+#googleMap{
+    width:100%;
+    height:400px;
+}
+.container{
+    color: black;
+    font-family: georgia;
+    max-width: 800px;
+    margin:auto;
+    padding: 10px;
+}
+
+.menu{
+    text-align: center;
+    font-size: 15px; 
+}
+
+.banner{
+    padding: 2px;
+    text-align: left;
+    background:transparent;
+    color:yellow;
+    font-size: 13px; 
+}
+
+.header{
+    padding: 10px;
+    text-align: center;
+    background:transparent;
+    color:white;
+    font-size: 20px;   
+}
+
+
