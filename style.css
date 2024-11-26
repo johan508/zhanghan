@@ -76,4 +76,11 @@ footer{
     font-size: 20px;   
 }
 
+.responsive-logo {
+    max-width: 100%;   /* Ensures the logo resizes proportionally */
+    height: auto;      /* Maintains the aspect ratio */
+    display: block;    /* Prevents inline image spacing */
+    margin: 0 auto;    /* Centers the logo (optional) */
+}
+
 
