@@ -50,7 +50,7 @@ footer{
 }
 .container{
     color: black;
-    font-family: Georgia;
+    font-family: Georgia, serif;
     max-width: 800px;
     margin:auto;
     padding: 10px;
