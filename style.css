@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@600;900&display=swap');
 
 body{
 /*     background-image: url("img/bg5.jpg"); */
@@ -53,7 +53,7 @@ footer{
 .container{
     color: black;
     font-family:  'Barlow', sans-serif;
-    font-weight: 500;
+    font-weight: 600;
     max-width: 800px;
     margin:auto;
     padding: 10px;
