@@ -84,7 +84,7 @@
 						    output_file = "Top_Companies.csv"<br>
 						    df.to_csv(output_file, index=False)<br>
 						
-						    print(f"Data saved to {output_file}")<br><br>
+						    print(f"Data saved to {output_file}")<br>
 						    # plot the data in bar chart<br>
 						    if not df.empty and 'canonical_name' in df and 'count' in df:<br>
 						        plt.figure(figsize=(10, 6))<br>
