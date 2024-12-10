@@ -50,16 +50,16 @@
 					<ol>
 						<li>Register and get an <b>API credential</b> on <b>Adzuna API</b></li>
 						<li>Get the <b>endpoints</b> for "Top companies" in Canada</li>
-						<li>Get familier with the <b>parameters</b> defined in Adzuna</li>
-						<li>Create a blank page in Python (I used Jupyter Notebook), and <b>set up the url</b> including the parameters</li>
+						<li>Get familier with the <b>parameters</b> defined in that endpoint</li>
+						<li>In Python (I used Jupyter Notebook), <b>set up the url</b> including the parameters</li>
 						<li>Make a request to <b>GET</b> the url</li>
 						<li>IF resonse code == 200, access the value of the key "leaderboard" in a dictionary (key-value pair in json) and convert into data frame (in Pandas) with 2 columns "company_name" and "count", ELSE return error code</li>
 						<li><b>Save</b> this data frame into a CSV file</li>
 						<li>Use any data analysis software (such as Excel) to visualize the data in a bar chart
 						<li>Done!</li>
 					</ol>
-					<br>
-					Here I paste the code and result: <br>
+
+					Here I paste the code and result: <br><br>
 					<code>
 						# Created by Han Zhang (you can copy it but pls put my name on it, if it doesn't work for you, email me) <br>
 						import requests<br>
@@ -89,6 +89,9 @@
 						    print("DATA WAS NOT EXTRACTED, ERROR CODE: " & response.status_code)<br>
 						
 					</code>
+					<br>
+					<b>Here is the results - Top 5 companies with # of vacancies for data analyst on 2024-12-10:</b> <br>
+					<img src="/img/Top5_companies_2024-12-10.png" alt="Top 5 Companies" width="800" height="600">
 
 				</li>
 				<br>
