@@ -84,7 +84,29 @@
 						    output_file = "Top_Companies.csv"<br>
 						    df.to_csv(output_file, index=False)<br>
 						
-						    print(f"Data saved to {output_file}")<br>
+						    print(f"Data saved to {output_file}")<br><br>
+						    # plot the data in bar chart<br>
+						    if not df.empty and 'canonical_name' in df and 'count' in df:<br>
+						        plt.figure(figsize=(10, 6))<br>
+						        bars = plt.barh(df['canonical_name'], df['count'], color='skyblue')<br>
+						
+						        # Add labels and title<br>
+						        plt.xlabel('Count', fontsize=12)<br>
+						        plt.ylabel('Company Name', fontsize=12)<br>
+						        plt.title('Top Companies by Count of Job Vacancy (data analyst) - valide at 2024-12-10 12:55', fontsize=14)<br>
+						        plt.gca().invert_yaxis()  # Invert the Y-axis for better visualization<br>
+						        
+						        # Add data labels next to each bar<br>
+						        for bar in bars:<br>
+						            width = bar.get_width()<br>
+						            plt.text(width + 0.2, bar.get_y() + bar.get_height()/2, str(int(width)), <br>
+						                     va='center', ha='left', fontsize=10, color='black')<br>
+						
+						        # Show the plot<br>
+						        plt.tight_layout()<br>
+						        plt.show()<br>
+						    else:<br>
+						        print("DataFrame is empty or required columns are missing.")<br>
 						else:<br>
 						    print("DATA WAS NOT EXTRACTED, ERROR CODE: " & response.status_code)<br>
 						
