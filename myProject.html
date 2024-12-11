@@ -49,8 +49,8 @@
 					The most important thing is - it's free. So, I'll rock & roll by "divide and conquer": <br>
 					<ol>
 						<li>Register and get an <b>API credential</b> on <b>Adzuna API</b></li>
-						<li>Get the <b>endpoints</b> for "Top companies" in Canada</li>
-						<li>Get familier with the <b>parameters</b> defined in that endpoint</li>
+						<li>Get the <b>endpoints</b> for "Top companies" in Canada - an endpoint is like a "web address" (url), there are 9 endpoints in Adzuna</li>
+						<li>Get familier with the <b>parameters</b> defined in that endpoint - what I used was just "what" parameter (what = 'data%20analyst' - %20 represent a space character), but if I want a more specific location, say I want to find out Top 5 employers for Java developer with # of vacancies in Ontario, just make what = 'java%20developer', location0='Canada', location1='Ontario'(by default, location0='Canada' when we select country = 'ca') </li>
 						<li>In Python (I used Jupyter Notebook), <b>set up the url</b> including the parameters</li>
 						<li>Make a request to <b>GET</b> an http response via the url</li>
 						<li>IF response code == 200, access the value of the key "leaderboard" in a dictionary (key-value pair in json) and convert into data frame (in Pandas) with 2 columns "company_name" and "count", ELSE return error code</li>
