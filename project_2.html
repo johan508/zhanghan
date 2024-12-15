@@ -1,1 +1,160 @@
 
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-P9JHZPCK6Q"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		
+		  gtag('config', 'G-P9JHZPCK6Q');
+		</script>
+		<meta charset="UTF-8"/>
+		<title>More about me</title>
+		<meta name = "author" content = "Han Zhang"/>
+		<meta name = "keywords" content = "Zhang, Han, Data analyst, Teacher, Computer, Science, Personal"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+		<link rel = "stylesheet" href="style.css"/>
+		<script src = "js/app.js"></script>
+		<script type="text/javascript" src="https://webpivottable.com/releases/latest/dist/wpt.js" ></script>
+	</head>
+
+	<body>
+		<div class = "container">
+			<div class = "header">
+				<h1>My Projects</h1>
+				<h1>Mon projets</h1>
+			</div>
+			<br />
+			<div align = "center">
+				<a href = "index.html"> Home </a> |
+				<a href = "myJob.html"> About me </a> |
+				<a href = "aboutMe.html"> More about me </a> |
+				<a href = "contactMe.html"> Contact me </a> |
+				<a href = "myProject.html">My projects</a>
+			</div>
+
+		
+			<br />
+			<p> 
+				Here comes some of my personal projects. I'll update maybe slowly but regularly ...
+				<br>
+				<br>
+
+				<li><b>Top 5 companies in Canada for "data analyst" </b> 
+				     <br>
+				    - As a nerd, I'm always curious about which employers have the most vacancies (in data analysis field) in Canada. So, here it comes. Since I didn't find any raw data fed me in a proper tabular format, such as a CSV or Excel file, I decided to extract them on the web by myself. This simple mini project is deployed based on the raw data extracted from
+				    <a href="https://developer.adzuna.com" target="_blank">Adzuna</a>, which is a kind of big third party job platform based in UK extracting and gathering data from other job webs, such as Indeed, Glassdoor and LinkedIn, etc. Furthermore, they supply the RESTful API, therefore, I can get the data in a clean and neat format (in JSON) in a safe and efficient way comparing to web scraping (web scraping gets raw html and sometimes faces to the problems of copyright / legality, etc. - it's annoying in one word). 
+					The most important thing is - it's free. So, I'll rock & roll by "divide and conquer": <br>
+					<ol>
+						<li>Register and get an <b>API credential</b> on <b>Adzuna API</b></li>
+						<li>Get the <b>endpoints</b> for "Top companies" in Canada - an endpoint is like a "web address" (url), there are 9 endpoints in Adzuna</li>
+						<li>Get familier with the <b>parameters</b> defined in that endpoint - what I used was just "what" parameter (what = 'data%20analyst'), '%20' in here represent a space character. But if I want a more specific location, say I want to find out Top 5 employers for Java developer with # of vacancies in Ontario, just make what = 'java%20developer', location0='Canada', location1='Ontario' (by default, location0='Canada' when we select country = 'ca') </li>
+						<li>In Python (I used Jupyter Notebook), <b>set up the url</b> including the parameters, in my case: <br>url = f'https://api.adzuna.com/v1/api/jobs/ca/top_companies?app_id={APP_ID}&app_key={APP_KEY}&what={WHAT}'</li>
+						<li>Make a request to <b>GET</b> an http response via the url</li>
+						<li>IF response code == 200, access the value of the key "leaderboard" in a dictionary (key-value pair in json) and convert into data frame (in Pandas) with 2 columns "company_name" and "count", ELSE return error code</li>
+						<li><b>Save</b> this data frame into a CSV file</li>
+						<li>Plot the results in a bar chart (or simply insert a chart in Excel) </li>
+						<li>Done!</li>
+					</ol>
+
+					Here I copy & paste my code: <br><br>
+					<code>
+						# Created by Han Zhang (you can copy it but pls put my name on it, if it doesn't work for you, email me) <br>
+						import requests<br>
+						import csv<br>
+						import pandas as pd<br>
+						import matplotlib.pyplot as plt<br>
+						APP_ID = YOUR_ID<br>
+						APP_KEY = YOUR_KEY<br>
+						# Define the job to search<br>
+						WHAT = 'data%20analyst'<br>
+						# File to store results<br>
+						csv_file = 'top_companies.csv'<br>
+						url = f'https://api.adzuna.com/v1/api/jobs/ca/top_companies?app_id={APP_ID}&app_key={APP_KEY}&what={WHAT}'<br>
+						# Make the API request<br>
+						response = requests.get(url)<br>
+						if response.status_code == 200:<br>
+						    data = response.json()<br>
+						    # Parse JSON and extract the leaderboard data<br>
+						    leaderboard = data['leaderboard']<br>
+						    # Convert leaderboard data to a DataFrame<br>
+						    df = pd.DataFrame(leaderboard)<br>
+						    # Save the DataFrame to a CSV file<br>
+						    output_file = "Top_Companies.csv"<br>
+						    df.to_csv(output_file, index=False)<br>
+						
+						    print(f"Data saved to {output_file}")<br>
+						    # plot the data in bar chart<br>
+						    if not df.empty and 'canonical_name' in df and 'count' in df:<br>
+						        plt.figure(figsize=(10, 6))<br>
+						        bars = plt.barh(df['canonical_name'], df['count'], color='skyblue')<br>
+						
+						        # Add labels and title<br>
+						        plt.xlabel('Count', fontsize=12)<br>
+						        plt.ylabel('Company Name', fontsize=12)<br>
+						        plt.title('Top Companies by Count of Job Vacancy (data analyst) - valide at 2024-12-10 12:55', fontsize=14)<br>
+						        plt.gca().invert_yaxis()  # Invert the Y-axis for better visualization<br>
+						        
+						        # Add data labels next to each bar<br>
+						        for bar in bars:<br>
+						            width = bar.get_width()<br>
+						            plt.text(width + 0.2, bar.get_y() + bar.get_height()/2, str(int(width)), <br>
+						                     va='center', ha='left', fontsize=10, color='black')<br>
+						
+						        # Show the plot<br>
+						        plt.tight_layout()<br>
+						        plt.show()<br>
+						    else:<br>
+						        print("DataFrame is empty or required columns are missing.")<br>
+						else:<br>
+						    print("DATA WAS NOT EXTRACTED, ERROR CODE: " & response.status_code)<br>
+						
+					</code>
+					<br>
+					Here is the result - Top 5 companies with # of vacancies for data analyst in Canada. (Please note that your result might be different than mine if you run at a different time or day.) <br><br>
+					<img src="/img/Top5_companies_2024-12-10.png" alt="Top 5 Companies" width="800" height="400" class="responsive-logo">
+					<br>
+					The result is very interesing. The top company has just less than 20 vacancies in the entire country makes me doubt it. 
+					I don't know how Adzuna handles the natural language, but my experience on Google search tells me "the less key words the more results". So I just put "data" instead of "data analyst". The result proves that I was right. But that brings another problem - it' too vague. Data what? Tons of jobs are related to data. In conclusion, both are correct, if I search "apex developer for just salesforce platform", maybe I'll get 0 result. The key point is to 
+					define the purpose of our analysis in advance and to find out a "tolerance point".
+					<br>
+					<br>
+					<img src="/img/Top5_companies_2024-12-11.png" alt="Top 5 Companies" width="800" height="400" class="responsive-logo">
+					<br>
+					
+
+
+				</li>
+				<br>
+				
+				<li><b>The GDP per capita of G7</b> 
+				     <br>
+				    - technically, this can't be regarded as a "project", it's rather a toy that I made in order to play around the Google Looker Studio. 
+				    Data comes from the <a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=XG&most_recent_value_desc=true" target="_blank">World Bank</a>. I have no comments on that. 
+				</li>
+
+			</p>
+				<div style="position: relative; max-width: 800px; height: 0; padding-bottom: 125%; margin: 0 auto;">
+				  <iframe 
+				    src="https://lookerstudio.google.com/embed/reporting/95aa3aa6-3c0f-43a3-9061-056776cd89c5/page/EwOYE" 
+				    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+				    frameborder="0" 
+				    allowfullscreen 
+				    sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+				  </iframe>
+				</div>
+				<br>
+		
+			<br>
+<!-- 			  <div style="width: 600px; height:480px;">
+			    <web-pivot-table />
+			  </div> -->
+
+		</div>
+	</body>
+</html>
+
+
