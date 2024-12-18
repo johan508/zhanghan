@@ -65,7 +65,8 @@
 				<br>
 				<br>
 				Here comes the code: <br>
-				<pre>
+
+				<code>
 					@ECHO OFF
 					REM User profile management system
 					REM by Han Zhang
@@ -133,10 +134,10 @@
 					SETLOCAL
 					SET /p delName=Enter the name of employee:
 					FOR /f "delims=" %%b in ('dir /s /a-d /b %delName%.txt') do (
-					            if exist "%%b" del %%b 
+						    if exist "%%b" del %%b 
 						    ECHO %delName% WAS DELETED.
-					            PAUSE
-					            GOTO menu)
+						    PAUSE
+						    GOTO menu)
 					PAUSE
 					ENDLOCAL
 					GOTO menu
@@ -147,7 +148,7 @@
 					SETLOCAL
 					SET /p searName=Enter the name of employee:
 					for /f "delims=" %%b in ('dir /s /a-d /b %searName%.txt') do (
-					            if exist "%%b" TYPE %%b
+						    if exist "%%b" TYPE %%b
 						    PAUSE
 						    GOTO menu)
 					PAUSE
@@ -172,7 +173,8 @@
 					:end
 					ECHO Thanks for using our HR system! Bye!
 					PAUSE
-				</pre>
+				</code>
+
 				
 				
 
