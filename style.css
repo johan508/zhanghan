@@ -95,12 +95,13 @@ footer{
 }
 
 .responsive {
-  max-width: 100%;
-  max-height: 100vh;
-  width:auto;
-  height: auto;
-  display:block;
-  margin: 0 auto;
+    max-width: 100%; /* Fits the image within the container's width */
+    max-height: 100vh; /* Ensures the image height fits within the viewport */
+    width: auto; /* Maintains aspect ratio */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Removes extra space below the image */
+    margin: 0 auto; /* Centers the image horizontally */
 }
+
 
 
