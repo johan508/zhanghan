@@ -59,7 +59,18 @@
 			<ol>
 				<li>Set up a maximum cap for the largest city – Toronto, say 2000 job posts. This would still reflect job diversity but with fewer API calls, considering the tradeoff between the dada sampling and traffic on the server of Adzuna. </li>
 				<li>Calculate the scaling factor. Say the population of Toronto city is approximately 2,794,356 according to <a href = "https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/details/page.cfm?Lang=E&GENDERlist=1,2,3&STATISTIClist=1,4&HEADERlist=0&DGUIDlist=2021A00053520005&SearchText=toronto" target="_blank">Statistics Canada of 2021 Census of Population</a>
-				<img src="/img/jm_f1.png" alt="work flow" width="400" height="110" class="responsive-logo">
+				<img src="/img/jm_f1.png" alt="work flow" width="400" height="110" class="responsive-logo"> 
+				<br><br>
+				</li>
+				<li>Apply this factor (f = 0.0018) to other cities to get the sample size:<br>
+				Montreal, QC – 1762949 × 0.0007 ≈ 1262,<br>
+				Calgary, AB – 1306784 × 0.0007 ≈ 935,<br>
+				Vancouver, BC – 662248 × 0.0007 ≈ 474,<br>
+				Quebec City, QC – 549459 × 0.0007 ≈ 393,<br>
+				Halifax, NS – 439819 × 0.0007 ≈ 315,<br>
+				Sherbrooke, QC – 172950 0.0007 ≈ 124<br>
+				<br>
+
 				</li>
 	
 			</ol>
