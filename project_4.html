@@ -41,9 +41,12 @@
 		<br>
 		<li><b>Job market analysis in selected Canadian cities</b> </li>
 		     <br>
-		    - As a nerd, I'm always curious about which employers have the most vacancies (in data analysis field) in Canada. So, here it comes. Since I didn't find any raw data fed me in a proper tabular format, such as a CSV or Excel file, I decided to extract them on the web by myself. This simple mini project is deployed based on the raw data extracted from
-		    <a href="https://developer.adzuna.com" target="_blank">Adzuna</a>, which is a kind of big third party job platform based in UK extracting and gathering data from other job webs, such as Indeed, Glassdoor and LinkedIn, etc. Furthermore, they supply the RESTful API, therefore, I can get the data in a clean and neat format (in JSON) in a safe and efficient way comparing to other methods, such as web scraping (web scraping gets raw html and sometimes faces to the problems of copyright / legality, etc. - it's annoying in one word). 
-			The most important thing is - it's free. Actually there is no "analysis" in this project - Aduzna will do these in their server end and spit out the results. What I need to do is just accessing their endpoint in the server via a GET request (as in HTTP), extract these results, parse them from JSON into data frame, visualize, and then save them into a csv file. Alors, c'est parti! <br>
+			This project is aiming to investigate the job supplies on the market of target cities in Canada (Sherbrooke, Montreal, Toronto, Vancouver, Calgary, Halifax) in a certain period. It's an ongoing project, the raw data pulled from Adzuna will be updated on every Friday (started from 2024-11-22). 
+			It's a "trial and error" project, which means the algorithm will probably be adjusted and updated based on the results accordingly. Jobs will be categorized into several groups, for example, Agriculture, Customer Services, Financial Services, IT, Education, etc. (there are 30 categories in Adzuna). 
+			The results will show the percentage of each category in a city, say, in the past week, among the 2000 random samples (job posts) from Montreal, 40% of the job falls into customer service; 30% falls into financial services; 20% falls into IT, etc. 
+			The following diagram shows the general procedures of this project.
+		    <br>
+			<img src="/img/job_maket_1.png" alt="Top 5 Companies" width="800" height="210" class="responsive-logo"> <br>
 			<ol>
 				<li>Register and get an <b>API credential</b> on <b>Adzuna API</b></li>
 				<li>Get the <b>endpoints</b> for "Top companies" in Canada - an endpoint is like a "web address" (url), there are 9 endpoints in Adzuna for different functionalities, ex. get job list in certain area; get top companies; get salaries, etc. (what I need now is "get top companies"). As per Adzuna, this endpoint returns a "leaderboard" of the top five employers by number of vacancies. I can filter for specific locations and/or job titles</li>
