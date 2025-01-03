@@ -94,4 +94,9 @@ footer{
 /*     margin: 0 auto;    /* Centers the logo (optional) */ */
 }
 
+.responsive {
+  max-width: 100%;
+  height: auto;
+}
+
 
