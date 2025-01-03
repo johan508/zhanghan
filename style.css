@@ -103,15 +103,6 @@ footer{
     margin: 0 auto; /* Centers the image horizontally */
 }
 
-.responsive-background {
-    background-image: url("img/home2.jpg");
-    background-size: cover; /* Ensures the image covers the container */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents tiling */
-    width: 100%; /* Full width */
-    height: 100vh; /* Full height of the viewport */
-}
-
 
 
 
