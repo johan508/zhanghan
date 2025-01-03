@@ -40,6 +40,7 @@
 		<br>
 		<li><b>Job market analysis in selected Canadian cities </b> </li>
 		     <br>
+		     <br>
 			This project aims at investigating the job supplies and categories in target cities in Canada (Sherbrooke, Montreal, Quebec City, Toronto, Vancouver, Calgary, Halifax) in a certain period. The raw data is pulled from Adzuna. It's an ongoing project, the raw data will be updated every Friday (started from 2024-11-22). 
 			It's also a "trial and error" project, which means the algorithm will probably be adjusted and updated based on the results accordingly. Jobs will be categorized into several groups, for example, Agriculture, Customer Services, Financial Services, IT, Education, etc. (there are 30 categories in Adzuna). 
 			The results will show the percentage of each category in a city, say, in the past week, among the 2000 random samples (job posts) from Montreal, 40% of the job falls into customer service; 30% falls into financial services; 20% falls into IT, etc. 
@@ -57,7 +58,7 @@
 			period in small cities like Sherbrooke, but will be a bit small and not representitive enough for big cities like Toronto. Therefore, I will use proportional sampling technique. Here comes the detail: 
 			<ol>
 				<li>Set up a maximum cap for the largest city – Toronto, say 2000 job posts. This would still reflect job diversity but with fewer API calls, considering the tradeoff between the dada sampling and traffic on the server of Adzuna. </li>
-				<li>Calculate the scaling factor. Say the population (number of people) of Toronto city is approximately 2,794,356 according to Statistics Canada of 2021 Census of Population (https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/details/page.cfm?Lang=E&GENDERlist=1,2,3&STATISTIClist=1,4&HEADERlist=0&DGUIDlist=2021A00053520005&SearchText=toronto)
+				<li>Calculate the scaling factor. Say the population of Toronto city is approximately 2,794,356 according to <a href = "https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/details/page.cfm?Lang=E&GENDERlist=1,2,3&STATISTIClist=1,4&HEADERlist=0&DGUIDlist=2021A00053520005&SearchText=toronto" target="_blank">Statistics Canada of 2021 Census of Population</a>
 				<img src="/img/jm_f1.png" alt="work flow" width="400" height="110" class="responsive-logo">
 				</li>
 	
