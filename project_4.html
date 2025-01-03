@@ -75,6 +75,15 @@
 				In the “Search and statistic API” in Adzuna, in the endpoint get jobs/{country}/search/{page}, the parameters “page” and “results_per_page” are directly relevent to my sample size, where “page” refers to the page number, it can be integers like 1 or 2, etc.. And “results_per_page” indicates the number of job posts in one page. 
 				By default, it’s 20, and the maximum number is 50. So, for a city like Toronto with sample size 2000. If I have 50 “results_per_page”, then I’ll need to pull 40 pages. (Here I can consider using a for loop in Python).  Let me generalize it as:<br>
 				<b>Number of pages = sample size ÷ results per page</b> <br>
+				If the “results_per_page” is 50, here comes the number of pages of each city (let’s round it up):<br>
+				Number of pages (Toronto) = 2000 ÷ 50 = 40, <br>
+				Number of pages (Montreal) = 1262 ÷ 50 ≈ 26, <br>
+				Number of pages (Calgary) = 935 ÷ 50 ≈ 19,<br>
+				Number of pages (Vancouver) = 474 ÷ 50 ≈ 10,<br>
+				Number of pages (Quebec City) = 393 ÷ 50 ≈ 8,<br>
+				Number of pages (Halifax) = 315 ÷ 50 ≈7, <br>
+				Number of pages (Sherbrooke) = 124 ÷ 50 ≈3<br>
+
 					
 				
 				</li>
