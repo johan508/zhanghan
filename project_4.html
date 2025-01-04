@@ -56,11 +56,11 @@
 			period in small cities like Sherbrooke, but will be a bit small and not representitive enough for big cities like Toronto. Therefore, I will use proportional sampling technique. One thing to consider is that jobs posted in Quebec province are in French (some are in English), when parsing the website, keep an eye on some relevant keywords to see if they need to be adjusted. Here comes the detail: 
 			<ol>
 				<li>Set up a maximum cap for the largest city – Toronto, say 2000 job posts. (Why 2000? - In Adzuna API portal, there is an endpoint showing the job posts in certain cities of a country which includes stats of total job posted on that day for the past certain period. So started from 2024-11-22, the total job posts of Toronto (within 30 km radius) in the past 7 days are 5197. 
-				    Let's suppose Adzuna can cover all the job posts in that week in Toronto, then 5197 is the total job posts (“population” in statistics) from 7 days ago till that day, so 2000 sample data represents 38% of the entire jobs, which is a good enough.) In addition, this sample size would still reflect job diversity but with fewer API calls considering the tradeoff between the dada sampling and traffic on the server of Adzuna. </li>
+				    Let's suppose Adzuna can cover all the job posts in that week in Toronto, then 5197 is the total job posts (“population” in statistics) from 7 days ago till that day, so 2000 sample data represents 38% of the entire jobs, which is a good enough.) In addition, this sample size would still reflect job diversity but with fewer API calls considering the tradeoff between the dada sampling and traffic on the server of Adzuna. </li><br>
 				<li>Calculate the scaling factor. Say the population of Toronto city is approximately 2,794,356 according to <a href = "https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/details/page.cfm?Lang=E&GENDERlist=1,2,3&STATISTIClist=1,4&HEADERlist=0&DGUIDlist=2021A00053520005&SearchText=toronto" target="_blank">Statistics Canada of 2021 Census of Population</a>
 				<br><br>
 					<img src="/img/jm_f1.png" alt="work flow" width="400" height="110" class="responsive-logo"> 
-				</li>
+				</li><br>
 				<li>Apply this factor (f = 0.0007) to other cities to get the sample size:<br>
 				Montreal, QC – 1762949 × 0.0007 ≈ 1262,<br>
 				Calgary, AB – 1306784 × 0.0007 ≈ 935,<br>
@@ -70,7 +70,7 @@
 				Sherbrooke, QC – 172950 0.0007 ≈ 124<br>
 				<br>
 					<code>samples_per_city = {city: min(int(pop * scaling_factor), toronto_cap) for city, pop in city_population.items()}</code><br>
-				</li>
+				</li><br>
 				<li>Confirm page number of each city. <br>
 				In the “Search and statistic API” in Adzuna, in the endpoint get jobs/{country}/search/{page}, the parameters “page” and “results_per_page” are directly relevent to my sample size, where “page” refers to the page number, it can be integers like 1 or 2, etc.. And “results_per_page” indicates the number of job posts in one page. 
 				By default, it’s 20, and the maximum number is 50. So, for a city like Toronto with sample size 2000. If I have 50 “results_per_page”, then I’ll need to pull 40 pages. (Here I can consider using a for loop in Python).  Let me generalize it as:<br>
@@ -87,7 +87,7 @@
 				<br>
 				For this part, a for loop will solvoe this issue. So to start up, I will use the past 7 days’ data from 2024-11-22 as a starting point, then follow up with weekly pulls for ongoing data collection, which will give me some insights into how the job market evolves over time. This approach avoids the heavy overhead of daily pulls but is still detailed enough to capture changes in the job market. 	
 				
-				</li>
+				</li><br>
 				<li>Set up the API parameters in Python and pull the data. In Aduzna, the parameters work as filters to generate the filtered results as we need, and those parameters are appended in the URL. The original URL is like: https://api.adzuna.com/v1/api/jobs/ca/search/1?
 				    Here the “ca” represents Canada (‘country’ = ‘ca’), and “1” means the data on the first page will be pulled (‘page’ = 1). As discussed above, 1 page is not enough to get the samples, so I’ll use a for loop to pull the data on the number of pages in each city as in 1.2.  These two are obligated parameters. Other than that, we got following parameters to append after the question mark “?”:
 <pre>
