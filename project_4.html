@@ -160,7 +160,7 @@ jobs = []
 				<b>2. Save data into SQL Server</b><br><br>
 				After pulling the raw data, I'll save them into SQL Server database. The first thing I need to do is to CREATE DATABASE. Since I’ve got the key-value pair of each object in the previous step, now I’ll need to CREATE TABLE with the column names similar as the ‘key’ in the JSON format data, for example, in the table, I need to have columns: company_name, job_tittle, job_category, province, city, etc, which are equivalent to the "company"."display_name", "title", "category"."label", 
 				"location"."area"[1], "location"."area"[2]. etc. as in the JSON format data as I got in the previous step. 
-				Here I'll use .get() function to access the values. <br>
+				Here I'll use .get() function to access the values. <br><br>
 				One thing to be very careful is that the number of columns in the table of SQL Server should be same as what I've pulled from the JSON format data from Adzuna and they should have the same data type, otherwise they won't be strored into the database. <br>
 				This is the code I wrote to creat database and table in SQL Server:<br>
 <pre>
