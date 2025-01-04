@@ -158,7 +158,7 @@ jobs = []
 				</li>
 				<br>
 				<b>2. Save data into SQL Server</b><br>
-				After pulling the raw data, I'll save them into SQL Server database. The first thing I need to do is to CREATE DATABASE. Since I’ve got the key-value pair of each object in previous step, I’ll need to CREATE TABLE with the column names as the ‘key’, for example, in the table, I need to have columns: company_name, job_tittle, job_category, province, city, etc, which are equivalent to the "company"."display_name", "title", "category"."label", 
+				After pulling the raw data, I'll save them into SQL Server database. The first thing I need to do is to CREATE DATABASE. Since I’ve got the key-value pair of each object in previous step, I’ll need to CREATE TABLE with the column names similar as the ‘key’ in the JSON file, for example, in the table, I need to have columns: company_name, job_tittle, job_category, province, city, etc, which are equivalent to the "company"."display_name", "title", "category"."label", 
 				"location"."area"[1], "location"."area"[2]. etc. in the JSON file as I got in the previous step. 
 				Here I'll use .get() function to access the values. <br>
 				This is the code I wrote to parse JSON file and save them into database:
