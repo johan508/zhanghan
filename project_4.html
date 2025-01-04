@@ -88,6 +88,27 @@
 				For this part, a for loop will solvoe this issue. So to start up, I will use the past 7 days’ data from 2024-11-22 as a starting point, then follow up with weekly pulls for ongoing data collection, which will give me some insights into how the job market evolves over time. This approach avoids the heavy overhead of daily pulls but is still detailed enough to capture changes in the job market. 	
 				
 				</li>
+				<li>Set up the API parameters in Python and pull the data. In Aduzna, the parameters work as filters to generate the filtered results as we need, and those parameters are appended in the URL. The original URL is like: https://api.adzuna.com/v1/api/jobs/ca/search/1?
+				    Here the “ca” represents Canada (‘country’ = ‘ca’), and “1” means the data on the first page will be pulled (‘page’ = 1). As discussed above, 1 page is not enough to get the samples, so I’ll use a for loop to pull the data on the number of pages in each city as in 1.2.  These two are obligated parameters. Other than that, we got following parameters to append after the question mark “?”:
+<pre>
+params = {
+	    'app_id': APP_ID,
+	    'app_key': APP_KEY,
+	    'where': city (use a for loop to loop through ‘Toronto, Montreal, Vancouver, etc.)
+	    'results_per_page': RESULTS_PER_PAGE, (here I set 50 – the max of Adzuna)
+	    'max_days_old': MAX_DAYS_OLD, (since I’ll pull every week, so it’s 7)
+	    'distance': DISTANCE, (it’s the distance to the city center in km, I set 30)
+	    'sort_by': SORT_BY (I set sort by date – the most recent records will be put on top)
+	}	
+</pre>       
+
+				   When I attach the parameters in the URL, I’ll make a request to GET the results:<br>
+				   response = requests.get(api_url, params=params)<br>
+				   The returned results will be in the format of JSON, I’ll need to extract the value in the ‘key’- ‘value’ pair. The outputs I will get is as following:<br>
+                                   Company name ("company",{"display_name":); Job title ("title"); Job Category ("Category","label":) (such as IT/ Accounting/Financial Services, etc.); Location (province, city)("location","area":); Education (required degree, such as bachelor in computer science); contract_time (full / part time) ("contract_time"); Contract type ("contract_type"); Salary ("salary_max", "salary_min"); Publish date ("created");Description("description":)
+                                   then put them into SQL Server database. So here comes the next part …
+
+				</li>
 	
 			</ol>
 			Here I copy & paste my code: <br><br>
