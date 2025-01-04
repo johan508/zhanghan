@@ -158,9 +158,35 @@ jobs = []
 				</li>
 				<br>
 				<b>2. Save data into SQL Server</b><br>
-				After pulling the raw data, I'll save them into SQL Server database. The first thing I need to do is to CREATE DATABASE. Since I’ve got the key-value pair of each object in previous step, I’ll need to CREATE TABLE with the column names similar as the ‘key’ in the JSON file, for example, in the table, I need to have columns: company_name, job_tittle, job_category, province, city, etc, which are equivalent to the "company"."display_name", "title", "category"."label", 
+				After pulling the raw data, I'll save them into SQL Server database. The first thing I need to do is to CREATE DATABASE. Since I’ve got the key-value pair of each object in the previous step, now I’ll need to CREATE TABLE with the column names similar as the ‘key’ in the JSON file, for example, in the table, I need to have columns: company_name, job_tittle, job_category, province, city, etc, which are equivalent to the "company"."display_name", "title", "category"."label", 
 				"location"."area"[1], "location"."area"[2]. etc. in the JSON file as I got in the previous step. 
 				Here I'll use .get() function to access the values. <br>
+				One thing to be very careful is that the number of columns in SQL Server should be same as what I've pulled from the JSON format data from Adzuna and they should have the same data type, otherwise they won't be strored into the database. <br>
+				This is the code I wrote to creat database and table in SQL Server:<br>
+<pre>
+-- this code will create a database and a table to save the data pulled from Adzuna API
+
+CREATE DATABASE job_data_DB;
+
+use job_data_DB;
+
+CREATE TABLE dbo.job_list (
+	id_sk int identity (1,1),   -- this is a surrogate key starting from 1
+	job_id nvarchar(255),            -- this is a real job id from the web
+	company_name nvarchar(255),
+	job_title nvarchar(255),
+	category nvarchar(255),
+	province nvarchar(255),
+	city nvarchar(255),
+	contract_time nvarchar(255),
+	contract_type nvarchar(255),
+	salary_min float,
+	salary_max float,
+	publish_date datetime,
+	job_description nvarchar(max),
+	job_count int
+
+</pre>	<br>			
 				This is the code I wrote to parse JSON file and save them into database:
 <pre>
 connection_string = (
