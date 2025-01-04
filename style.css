@@ -62,7 +62,10 @@ footer{
 .menu{
     flex: 1;                    /* Allows the menu to expand if needed */
     text-align: center;
-    font-size: 15px; 
+    font-size: 15px;
+    color: black;
+    font-family:  'Barlow', sans-serif;
+    font-weight: 400;
 }
 
 .banner{
