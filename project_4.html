@@ -132,6 +132,25 @@ params = {
 
 				   When I attach the parameters in the URL, I’ll make a request to GET the results:<br>
 				   response = requests.get(api_url, params=params)<br>
+				   Combing the parameters as above, it will look like:
+<pre>
+total_pages = math.ceil(sample_size / 50)
+jobs = []
+
+    for page in range (1, total_pages + 1):
+        api_url = f'https://api.adzuna.com/v1/api/jobs/ca/search/{page}'
+        params = {
+            'app_id': APP_ID,
+            'app_key': APP_KEY,
+            'where': city,
+            'results_per_page': RESULTS_PER_PAGE,
+            'max_days_old': MAX_DAYS_OLD,
+            'distance': DISTANCE,
+            'sort_by': SORT_BY
+        }
+        
+        response = requests.get(api_url, params=params)
+</pre>
 				   The returned results will be in the format of JSON, I’ll need to extract the value in the ‘key’- ‘value’ pair. The outputs I will get is as following:<br>
                                    Company name ("company",{"display_name":); Job title ("title"); Job Category ("Category","label":) (such as IT/ Accounting/Financial Services, etc.); Location (province, city)("location","area":); Education (required degree, such as bachelor in computer science); contract_time (full / part time) ("contract_time"); Contract type ("contract_type"); Salary ("salary_max", "salary_min"); Publish date ("created");Description("description":)
                                    then put them into SQL Server database. So here comes the next part …
