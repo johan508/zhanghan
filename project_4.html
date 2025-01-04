@@ -160,7 +160,51 @@ jobs = []
 				<b>2. Save data into SQL Server</b><br>
 				After pulling the raw data, I'll save them into SQL Server database. The first thing I need to do is to CREATE DATABASE. Since I’ve got the key-value pair of each object in previous step, I’ll need to CREATE TABLE with the column names as the ‘key’, for example, in the table, I need to have columns: company_name, job_tittle, job_category, province, city, etc, which are equivalent to the "company"."display_name", "title", "category"."label", 
 				"location"."area"[1], "location"."area"[2]. etc. in the JSON file as I got in the previous step. 
-				Here I'll use .get() function to access the values. 
+				Here I'll use .get() function to access the values. <br>
+				This is the code I wrote to parse JSON file and save them into database:
+<pre>
+connection_string = (
+"Driver={ODBC Driver 17 for SQL Server};"
+"Server=SERVER_NAME;"  # my server name, e.g., "localhost" or "192.168.1.100"
+"Database=DATABASE_NAME;"
+"Trusted_Connection=yes;"
+)
+    
+    try:
+        conn = pyodbc.connect(connection_string) # connect to SQL server
+        cursor = conn.cursor()
+        
+        for job in jobs:
+            cursor.execute('''
+                INSERT INTO dbo.job_list (job_id, company_name, job_title, category, province, city, 
+                contract_time, contract_type, salary_min, salary_max, publish_date, job_description, 
+                total_job_count) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ''', 
+                job.get('id'),
+                job.get('company', {}).get('display_name'),
+                job.get('title'),
+                job.get('category', {}).get('label'),
+                job.get('location', {}).get('area', [None, None])[1],
+                job.get('location', {}).get('area', [None, None])[2],
+                job.get('contract_time'),
+                job.get('contract_type'),
+                job.get('salary_min'),
+                job.get('salary_max'),
+                job.get('created'),
+                job.get('description'),
+                jobs_count)
+        
+        conn.commit()
+        print(f"Successfully saved {len(jobs)} job(s) to the database.")
+        
+    except pyodbc.Error as e:
+        print(f"An error occurred: {e}")
+        
+    finally:
+        cursor.close()
+        conn.close() 
+</pre>
 	
 			</ol>
 			Here I copy & paste my code: <br><br>
