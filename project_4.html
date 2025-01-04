@@ -112,7 +112,9 @@ city_population = {
 				This approach avoids the heavy overhead of daily pulls but is still detailed enough to capture changes in the job market. 	
 				
 				</li><br>
-				<li>Set up the API parameters in Python and pull the data. With those key factors confirmed in the previous steps, it's time to set up the parameters. In Aduzna, the parameters work as filters to generate the filtered results as we need, and those parameters are appended in the URL. The original URL should be like: https://api.adzuna.com/v1/api/jobs/ca/search/1?<br>
+				<li>Set up the API parameters in Python and pull the data. With those key factors confirmed in the previous steps, it's time to set up the parameters. In Aduzna, the parameters work as filters to generate the filtered results as we need, and those parameters are appended in the URL. The original URL should be like: 
+				    <br>
+				    https://api.adzuna.com/v1/api/jobs/ca/search/1?<br>
 				    Here the “ca” represents Canada (‘country’ = ‘ca’), and “1” means the data on the first page will be pulled (‘page’ = 1). As discussed above, 1 page is not enough to get the samples, so I’ll use a for loop to pull the data on the number of pages in each city as in 1.4. These are obligated parameters. Other than that, we got following parameters to append after the question mark “?”:
 <pre>
 params = {
