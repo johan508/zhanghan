@@ -69,6 +69,7 @@
 				Halifax, NS – 439819 × 0.0007 ≈ 315,<br>
 				Sherbrooke, QC – 172950 0.0007 ≈ 124<br>
 				<br>
+					<code>samples_per_city = {city: min(int(pop * scaling_factor), toronto_cap) for city, pop in city_population.items()}</code><br>
 				</li>
 				<li>Confirm page number of each city. <br>
 				In the “Search and statistic API” in Adzuna, in the endpoint get jobs/{country}/search/{page}, the parameters “page” and “results_per_page” are directly relevent to my sample size, where “page” refers to the page number, it can be integers like 1 or 2, etc.. And “results_per_page” indicates the number of job posts in one page. 
