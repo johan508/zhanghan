@@ -55,7 +55,8 @@
 			I'll try some small samples as a starting point at first, if the outcome is not ideal, I will adjust the sample size then repeat until I get a good response. Given the population of my target cities differ a lot, choosing a same sample size (for example 1000) will probably exhaust all job posts in that 
 			period in small cities like Sherbrooke, but will be a bit small and not representitive enough for big cities like Toronto. Therefore, I will use proportional sampling technique. One thing to consider is that jobs posted in Quebec province are in French (some are in English), when parsing the website, keep an eye on some relevant keywords to see if they need to be adjusted. Here comes the detail: 
 			<ol>
-				<li>Set up a maximum cap for the largest city – Toronto, say 2000 job posts. This would still reflect job diversity but with fewer API calls, considering the tradeoff between the dada sampling and traffic on the server of Adzuna. </li>
+				<li>Set up a maximum cap for the largest city – Toronto, say 2000 job posts. (Why 2000? - In Adzuna API portal, there is an endpoint showing the job posts in certain cities of a country which includes stats of total job posted on that day for the past certain period. So started from 2024-11-22, the total job posts of Toronto (within 30 km radius) in the past 7 days are 5197. 
+				    Let's suppose Adzuna can cover all the job posts in that week in Toronto, then 5197 is the total job posts (“population” in statistics) from 7 days ago till that day, so 2000 sample data represents 38% of the entire jobs, which is a good enough.) In addition, this sample size would still reflect job diversity but with fewer API calls considering the tradeoff between the dada sampling and traffic on the server of Adzuna. </li>
 				<li>Calculate the scaling factor. Say the population of Toronto city is approximately 2,794,356 according to <a href = "https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/details/page.cfm?Lang=E&GENDERlist=1,2,3&STATISTIClist=1,4&HEADERlist=0&DGUIDlist=2021A00053520005&SearchText=toronto" target="_blank">Statistics Canada of 2021 Census of Population</a>
 				<br><br>
 					<img src="/img/jm_f1.png" alt="work flow" width="400" height="110" class="responsive-logo"> 
@@ -73,7 +74,7 @@
 				In the “Search and statistic API” in Adzuna, in the endpoint get jobs/{country}/search/{page}, the parameters “page” and “results_per_page” are directly relevent to my sample size, where “page” refers to the page number, it can be integers like 1 or 2, etc.. And “results_per_page” indicates the number of job posts in one page. 
 				By default, it’s 20, and the maximum number is 50. So, for a city like Toronto with sample size 2000. If I have 50 “results_per_page”, then I’ll need to pull 40 pages. (Here I can consider using a for loop in Python).  Let me generalize it as:<br>
 				<br>
-				<img src="/img/jm_f2.png" alt="work flow" width="400" height="110" class="responsive-logo">  <br>
+				<img src="/img/jm_f2.png" alt="work flow" width="300" height="110" class="responsive-logo">  <br>
 				If the “results_per_page” is 50, here comes the number of pages of each city (let’s round it up):<br>
 				Number of pages (Toronto) = 2000 ÷ 50 = 40, <br>
 				Number of pages (Montreal) = 1262 ÷ 50 ≈ 26, <br>
