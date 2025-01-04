@@ -98,6 +98,7 @@ footer{
 }
 
 .responsive {
+    background-image: url("img/home3.jpg"); 
     max-width: 100%; /* Fits the image within the container's width */
     max-height: 100vh; /* Ensures the image height fits within the viewport */
     width: auto; /* Maintains aspect ratio */
