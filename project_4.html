@@ -52,8 +52,8 @@
 			1. Extract raw data from Adzuna API by Python
 			<br><br>
 			The raw data will be pulled from a third-party platform – Adzuna, which is same as in the first project. <br>
-			A key thing to clarify in this step is the sampling technique, it's the foundation of this project. Enough sample size will give me a good understanding of the job market with as little bias as possible. However, just like I cannot know the temperature of the water in my bathtub before I touch it, 
-			I'll try some small samples as a starting point at first, if the outcome is not ideal, I will adjust the sample size then repeat until I get a good response. Given the population of my target cities differ a lot, choosing a same sample size (for example 1000) will probably exhaust all job posts in that 
+			A key thing to clarify in this step is the sampling technique, it's the foundation of this project. Enough sample size will give me a good understanding of the job market with as little bias as possible. However, how much is "enough"? I don't know.
+			So I'll try some small samples as a starting point at first, if the outcome is not ideal, I will adjust the sample size then repeat until I get a good response. Given the population of my target cities differ a lot, choosing a same sample size (for example 1000) will probably exhaust all job posts in that 
 			period in small cities like Sherbrooke, but will be a bit small and not representitive enough for big cities like Toronto. Therefore, I will use proportional sampling technique. One thing to consider is that jobs posted in Quebec province are in French (some are in English), when parsing the website, keep an eye on some relevant keywords to see if they need to be adjusted. Here comes the detail: 
 			<ol>
 				<li>Set up a maximum cap for the largest city – Toronto, say 2000 job posts. (Why 2000? - In Adzuna API portal, there is an endpoint showing the job posts in certain cities of a country which includes stats of total job posted on that day for the past certain period. So started from 2024-11-22, the total job posts of Toronto (within 30 km radius) in the past 7 days are 5197. 
