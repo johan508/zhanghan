@@ -94,8 +94,8 @@ city_population = {
  'Sherbrooke,QC': 123}
 </pre>
 				</li><br>
-				<li>Confirm page number of each city (pagination). <br>
-				In the “Search and statistic API” in Adzuna, in the endpoint get jobs/{country}/search/{page}, the parameters “page” and “results_per_page” are directly relevent to my sample size, where “page” refers to the page number, it can be integers like 1 or 2, etc.. And “results_per_page” indicates the number of job posts in one page. 
+				<li>Confirm page number of each city (pagination). The sample size of each city has been confirmed in previous step. However, in Adzuna API, only the data in the first page will be pulled by default, and one page can have at most 50 records, which is apparently not enough.
+				So we will need to configure the "page" and “results_per_page” parameters in Adzuna. Here “page” refers to the page number, it can be integers like 1 or 2, etc.. And “results_per_page” indicates the number of job posts in one page. 
 				By default, it’s 20, and the maximum number is 50. So, for a city like Toronto with sample size 2000. If I have 50 “results_per_page”, then I’ll need to pull 40 pages. (Here I can consider using a for loop in Python).  Let me generalize it as:<br>
 				<br>
 				<img src="/img/jm_f2.png" alt="work flow" width="300" height="110" class="responsive-logo">  <br>
