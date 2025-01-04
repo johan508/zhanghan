@@ -49,7 +49,7 @@
 			<img src="/img/job_maket_1.png" alt="work flow" width="800" height="210" class="responsive-logo"> <br>
 
 			
-			1. Extract raw data from Adzuna API by Python
+			<b>1. Extract raw data from Adzuna API by Python</b>
 			<br><br>
 			The raw data will be pulled from a third-party platform – Adzuna, which is same as in the first project. <br>
 			A key thing to clarify in this step is the sampling technique, it's the foundation of this project. Enough sample size will give me a good understanding of the job market with as little bias as possible. However, how much is "enough"? I don't know.
@@ -156,6 +156,10 @@ jobs = []
                                    then put them into SQL Server database. So here comes the next part …
 
 				</li>
+				<b>2. Save data into SQL Server</b>
+				After pulling the raw data, I'll save them into SQL Server database. The first thing I need to do is to CREATE DATABASE. Since I’ve got the key-value pair of each object in previous step, I’ll need to CREATE TABLE with the column names as the ‘key’, for example, in the table, I have columns: company_name, job_tittle, job_category, province, city, etc, which are equivalent to the "company"."display_name", "title", "category"."label", 
+				"location"."area"[1], "location"."area"[2]. etc. The value of each one are just extracted from the JSON file as I got in the previous step. 
+				Here I'll use .get() function to access the values. 
 	
 			</ol>
 			Here I copy & paste my code: <br><br>
