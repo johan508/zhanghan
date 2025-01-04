@@ -108,7 +108,8 @@ city_population = {
 				Number of pages (Halifax) = 315 ÷ 50 ≈7, <br>
 				Number of pages (Sherbrooke) = 124 ÷ 50 ≈3<br>
 				<br>
-				For this part, a for loop will solvoe this issue. So to start up, I will get a job list of the past 7 days from 2024-11-22 as a starting point, then follow up with weekly pulls (every Friday) for ongoing data collection, which will give me some insights into how the job market evolves over time (I will have time series analysis in the future). 
+				For this part, a for loop like <code>for page in range (1, total_pages + 1): </code> together with a proper URL such as <code>api_url = f'https://api.adzuna.com/v1/api/jobs/ca/search/{page}'</code>will solvoe this issue, where the <code>page</code> is the looping variable. So to start up, I will get a job list of the past 7 days from 2024-11-22 of the selected cities, each has the sampling job posts pulled from page 1 to the calculated page as shown above.
+				This is just a starting point, then follow up with weekly pulls (every Friday) for ongoing data collection, which will give me some insights into how the job market evolves over time (I will have time series analysis in the future). 
 				This approach avoids the heavy overhead of daily pulls but is still detailed enough to capture changes in the job market. 	
 				
 				</li><br>
