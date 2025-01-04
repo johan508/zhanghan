@@ -112,7 +112,7 @@ city_population = {
 				This approach avoids the heavy overhead of daily pulls but is still detailed enough to capture changes in the job market. 	
 				
 				</li><br>
-				<li>Set up the API parameters in Python and pull the data. With those key factors confirmed in the previous steps, it's time to set up the parameters. In Aduzna, some parameters work as authentication, such as API_ID and API_Key, some work as filters to generate the filtered results as we need, these parameters can be appended to the base endpoint (URL). The original base endpoint looks like: 
+				<li>Set up the API parameters in Python and pull the data. With those key factors confirmed in the previous steps, it's time to set up the parameters. In Aduzna, some parameters work as authentication, such as APP_ID and APP_Key (the ID and Key in Adzuna), some work as filters to generate the filtered results as we need, these parameters can be appended to the base endpoint (URL). The original base endpoint looks like: 
 				    <br>
 				    https://api.adzuna.com/v1/api/jobs<br>
 				    This base URL is same for all endpoints for accessing job listing. On top of that I have /ca, which indicates the country code (Canada in this case). Then I have /search/1 representing the search end point and page number (first page in this case). Then a question mark ? indicating the beginning of the query string, where the parameters are added. Till now, the endpoint is like: <br>
