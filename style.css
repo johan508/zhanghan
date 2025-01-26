@@ -109,7 +109,7 @@ footer{
 
 .image-text-container {
     display: flex;
-    align-items: flex-end; /* Aligns items at the bottom */
+    align-items: flex-start; /* Aligns items at the top */
     gap: 20px; /* Adds space between image and text */
 }
 
