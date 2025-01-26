@@ -107,6 +107,17 @@ footer{
     margin: 0 auto; /* Centers the image horizontally */
 }
 
+.image-text-container {
+    display: flex;
+    align-items: center; /* Aligns items vertically in the center */
+}
+
+.image {
+    width: 100px; /* Adjust the width as needed */
+    height: auto; /* Maintains the aspect ratio */
+    margin-right: 10px; /* Adds space between the image and text */
+}
+
 
 
 
