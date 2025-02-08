@@ -165,7 +165,7 @@ jobs = []
 				"location"."area"[1], "location"."area"[2]. etc. as in the JSON format data as I got in the previous step. 
 				Here I'll use .get() function to access the values. <br><br>
 				One thing to be very careful is that the number of columns in the table of SQL Server should be same as what I've pulled from the JSON format data from Adzuna and they should have the same data type, otherwise they won't be strored into the database. <br>
-				This is the code I wrote to creat database and table in SQL Server:<br>
+				This is the code I wrote to creat database and table in SQL Server (the DBMS is on my own PC at home):<br>
 <pre>
 -- this code will create a database and a table to save the data pulled from Adzuna API
 
@@ -237,7 +237,7 @@ connection_string = (
 			This is a sample of data saved into SQL Server pulled from Adzuna API: <br><br>
 			<img src="/img/job_maket_5.png" alt="job_market" width="800" height="300" class="responsive-logo"><br>
 		        <b>3. ETL & data analysis in Power BI</b><br>
-			Till now, the raw data is saved into database. Then I'll extract it and transform it to get the clean and ideal format for some features as I need. I'll do this part in Power Query, and then creat the models and dashboard in Power BI.<br>
+			Till now, the raw data is saved into SQL Server on-premises (on my own PC). Then I extracted it and transformed it to get the clean and ideal format for the features I needed. I did this part in Power Query, where I've also created the fact tables and dimension tables for the star schema and then created the models and dashboard in Power BI.<br>
 			This is the first dashborad I created (I cannot publish my work with free license in PBI Desktop, so I just took a screenshot - it's pretty sloppy):<br><br>
 			<img src="/img/job_maket_3.png" alt="job_market" width="800" height="600" class="responsive-logo"><br>
 			From the results, I can at least know as of 2024-11-29, in Toronto, there are 10446 vacancies in total in the past 2 weeks. Among the approximately 4000 samples I extracted, the most demanding job category is IT - accounting for approx. 20% (rounded). An estimated # of vacancy is 2092 (10446 × approx. 20%). The second one is accounting & finance (approx. 13.2%), est. # of vacancy is 1377 (10446 × approx. 13.2%). And so on so forth ...<br><br>
