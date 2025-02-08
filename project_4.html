@@ -60,8 +60,7 @@
 			The RESPONSE I will get from the server is shown in the following screenshot: 
 			<img src="/img/json_2.png" alt="JSON" width="800" height="210" class="responsive-logo"> <br>
 			As shown above, the data is saved in key-value pairs, I will use the GET() method to extract the values, then save them into the database in SQL Server by INSERT INTO queries under a CURSOR.<br><br>
-			Another key thing to clarify in this step is the sampling technique, it's the foundation of this project. Enough sample size will give me a good understanding of the job market with as little bias as possible. However, how much is "enough"? I don't know.
-			So I'll try some small samples as a starting point at first, if the outcome is not ideal, I will adjust the sample size then repeat until I get a good response. Given the population of my target cities differ a lot, choosing a same sample size (for example 1000) will probably exhaust all job posts in that 
+			Another key thing to clarify in this step is the sampling technique. Big and random samples will give me a good understanding of the job market with as little bias as possible. Given the population of my target cities differ a lot, choosing a same sample size (for example 1000) will probably exhaust all job posts in that 
 			period in small cities like Sherbrooke, but will be a bit small and not representitive enough for big cities like Toronto. Therefore, I will use proportional sampling technique. One thing to consider is that jobs posted in Quebec province are in French (some are in English), when parsing the website, keep an eye on some relevant keywords to see if they need to be adjusted. Here comes the detail: 
 			<ol>
 				<li>Set up a maximum cap for the largest city – Toronto, say 2000 job posts. (Why 2000? - as per Adzuna API, started from 2024-11-22, the total job posts of Toronto (within 30 km radius) in the past 7 days are 5197. 
