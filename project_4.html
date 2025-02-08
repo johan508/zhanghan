@@ -237,7 +237,17 @@ connection_string = (
 			This is a sample of data saved into SQL Server pulled from Adzuna API: <br><br>
 			<img src="/img/job_maket_5.png" alt="job_market" width="800" height="300" class="responsive-logo"><br>
 		        <b>3. ETL & data analysis in Power BI</b><br>
-			Till now, the raw data is saved into SQL Server on-premises (on my own PC). Then I extracted it and transformed it to get the clean and ideal format for the features I needed. I did this part in Power Query, where I've also created the fact tables and dimension tables for the star schema and then created the models and dashboard in Power BI.<br>
+			Till now, the raw data is saved into SQL Server on-premises (on my own PC). Then I extracted it and transformed it to get the clean and ideal format for the features I needed. I did this part in Power Query, where I've also created fact tables and dimension tables for the star schema. As shown below:<br>
+			Fact_job_list - the list extracted from SQL Server, where the job records are saved <br>
+			Fact_Job_Count_On_DateOfExtract - a copy of "Fact_job_list" where relevant columns were selected and then were "Group by" to get one record per city on each date of extract. I created this table to get a "verification" to see the total job count (not samples) on the date of extract, where each city must have only
+			one total_job_count. If there are 2 or more, means at least a job record classified to a wrong city.<br>
+			Dim_calender - a calendar created in Power Query <br>
+			Dim-province_city - a mapping table of cities and provinces in Canada<br>
+			Dim_extract_date - a table extracted from an Excel file, where the date of extract was saved started from 2024-11-22, the interval is 7.<br><br>
+			<img src="/img/PQ_1.png" alt="job_market" width="800" height="300" class="responsive-logo"><br>
+
+				
+			
 			This is the first dashborad I created (I cannot publish my work with free license in PBI Desktop, so I just took a screenshot - it's pretty sloppy):<br><br>
 			<img src="/img/job_maket_3.png" alt="job_market" width="800" height="600" class="responsive-logo"><br>
 			From the results, I can at least know as of 2024-11-29, in Toronto, there are 10446 vacancies in total in the past 2 weeks. Among the approximately 4000 samples I extracted, the most demanding job category is IT - accounting for approx. 20% (rounded). An estimated # of vacancy is 2092 (10446 × approx. 20%). The second one is accounting & finance (approx. 13.2%), est. # of vacancy is 1377 (10446 × approx. 13.2%). And so on so forth ...<br><br>
