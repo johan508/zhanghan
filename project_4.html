@@ -237,7 +237,7 @@ connection_string = (
 			This is a sample of data saved into SQL Server pulled from Adzuna API: <br><br>
 			<img src="/img/job_maket_5.png" alt="job_market" width="800" height="300" class="responsive-logo"><br>
 		        <b>3. ETL & data analysis in Power BI</b><br>
-			Till now, the raw data is saved into SQL Server on-premises (on my own PC). Then I extracted it and transformed it to get the clean and ideal formatted data with the features I needed. I did this part in Power Query, where I've also created fact tables and dimension tables for the star schema. As shown below where:<br><br>
+			Till now, the raw data is saved into SQL Server on-premises (on my own PC). Then I extracted it and transformed it to get the clean and ideal formatted data with the features I needed. I did this part in Power Query, where I've also created fact tables and dimension tables for the star schema in the model. As shown below, where:<br><br>
 			<i>Fact_job_list</i> - the list extracted from SQL Server, where the job records are saved <br>
 			<i>Fact_Job_Count_On_DateOfExtract</i> - a copy of "Fact_job_list" where relevant columns were selected and then were "Group by" to get one record per city on each date of extract. I created this table to get a "verification" to see the total job count (not samples) on the date of extract, where each city must have only
 			one total_job_count. If there are 2 or more, means at least a job record classified to a wrong city.<br>
