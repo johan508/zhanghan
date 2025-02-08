@@ -237,15 +237,16 @@ connection_string = (
 			This is a sample of data saved into SQL Server pulled from Adzuna API: <br><br>
 			<img src="/img/job_maket_5.png" alt="job_market" width="800" height="300" class="responsive-logo"><br>
 		        <b>3. ETL & data analysis in Power BI</b><br>
-			Till now, the raw data is saved into SQL Server on-premises (on my own PC). Then I extracted it and transformed it to get the clean and ideal format for the features I needed. I did this part in Power Query, where I've also created fact tables and dimension tables for the star schema. As shown below:<br>
-			Fact_job_list - the list extracted from SQL Server, where the job records are saved <br>
-			Fact_Job_Count_On_DateOfExtract - a copy of "Fact_job_list" where relevant columns were selected and then were "Group by" to get one record per city on each date of extract. I created this table to get a "verification" to see the total job count (not samples) on the date of extract, where each city must have only
+			Till now, the raw data is saved into SQL Server on-premises (on my own PC). Then I extracted it and transformed it to get the clean and ideal formatted data with the features I needed. I did this part in Power Query, where I've also created fact tables and dimension tables for the star schema. As shown below where:<br>
+			<i>Fact_job_list</i> - the list extracted from SQL Server, where the job records are saved <br>
+			<i>Fact_Job_Count_On_DateOfExtract</i> - a copy of "Fact_job_list" where relevant columns were selected and then were "Group by" to get one record per city on each date of extract. I created this table to get a "verification" to see the total job count (not samples) on the date of extract, where each city must have only
 			one total_job_count. If there are 2 or more, means at least a job record classified to a wrong city.<br>
-			Dim_calender - a calendar created in Power Query <br>
-			Dim-province_city - a mapping table of cities and provinces in Canada<br>
-			Dim_extract_date - a table extracted from an Excel file, where the date of extract was saved started from 2024-11-22, the interval is 7.<br><br>
-			<img src="/img/PQ_1.png" alt="job_market" width="800" height="300" class="responsive-logo"><br>
-
+			<i>Dim_Calender</i> - a calendar created in Power Query <br>
+			<i>Dim_Standard_GeoInfo</i> - a mapping table extracted from an Excel File storing cities and provinces in Canada<br>
+			<i>Dim_Extract Date</i> - a table extracted from an Excel file, where the date of extract was saved started from 2024-11-22, the interval is 7.<br><br>
+			<img src="/img/PQ_1.png" alt="job_market" width="800" height="300" class="responsive-logo"><br><br>
+			This is the model I created: <br>
+                        <img src="/img/PBI_model.png" alt="job_market" width="800" height="300" class="responsive-logo"><br>
 				
 			
 			This is the first dashborad I created (I cannot publish my work with free license in PBI Desktop, so I just took a screenshot - it's pretty sloppy):<br><br>
