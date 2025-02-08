@@ -245,13 +245,13 @@ connection_string = (
 			Till now, the raw data is saved into SQL Server on-premises (on my own PC). Then I extracted it and transformed it to get the clean and ideal formatted data with the features I needed. I did this part in Power Query, where I've also created fact tables and dimension tables for the star schema in the model. As shown below, where:<br><br>
 			<i>Fact_job_list</i>: a fact table containing the job records extracted from SQL Server <br>
 			<i>Fact_Job_Count_On_DateOfExtract</i>: a fact table with the total count of jobs on the date of extract. This is a copy of "Fact_job_list" where relevant columns were selected and then were "Group by" to get one record per city on each date of extract. I created this table to get a "verification" to see the total job count (not samples) on the date of extract, where each city must have only
-			one value in total_job_count. If there are 2 or more, means at least a job record classified to a wrong city. Ex. say on 2024-11-22, there are 5197 total job vacancies in Toronto, so in original list any job record from Toronto should have total_job_count = 5197, if a record has another value, say 3228, then there will be 2 Toronto records, one with value 5197, another is 3228. but since Vancouver has total_job_count = 3228, this means at least a job record mis-classified to Vancouver<br>
+			one value in total_job_count. If there are 2 or more, means at least a job record classified to a wrong city. Ex. say on 2024-11-22, there are 5197 total job vacancies in Toronto, so in original list any job record from Toronto should have total_job_count = 5197, if a record has another value, say 3228, then there will be 2 Toronto records, one with value 5197, another is 3228. but since Vancouver has total_job_count = 3228, this means at least a job record mis-classified to Vancouver, as shown below.<br>
 			<i>Dim_Calender</i>: a dimension table with a calendar created in Power Query <br>
 			<i>Dim_Standard_GeoInfo</i>: a dimension mapping table extracted from an Excel File on my local PC which stores a list of cities and provinces in Canada<br>
 			<i>Dim_Extract Date</i>: a dimension table extracted from an Excel file on my local PC, where the date of extract was saved started from 2024-11-22, the interval is 7.<br><br>
 			<img src="/img/job_market_6.png" alt="job_market" width="800" height="300" class="responsive-logo"><br><br>
 			<img src="/img/PQ_1.png" alt="job_market" width="800" height="300" class="responsive-logo"><br><br>
-			This is a simple model I created with the "Cardinality" and "Cross-filter direction": <br>
+			This is a simple model I created with the "Cardinality" and "Cross-filter direction" settings: <br>
                         <img src="/img/PBI_model.png" alt="job_market" width="800" height="300" class="responsive-logo"><br>
 				
 			
