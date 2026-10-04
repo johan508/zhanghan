@@ -268,6 +268,19 @@ connection_string = (
 			The relatively high shares of Engineering and IT are broadly consistent with Montréal's established engineering and technology-oriented economy. However, the current category-level data are insufficient to determine whether specific industries, such as aerospace or gaming, are driving these results. Employer, industry, 
 				and job-description analysis would be necessary to test this hypothesis.<br><br>
 			<img src="/img/Montreal_1.png" alt="job_market" width="800" height="600" class="responsive-logo"><br>
+			Sherbrooke was included as a smaller-city case study and is also the city where I live. During the observation period, Adzuna reported 871 vacancies, while 815 postings were included in my dataset.
+			Trade & Construction accounts for 40.1% of the sampled postings, followed by Engineering (19.6%) and Customer Service (5.5%).<br><br>
+			The Sherbrooke figures also demonstrate an important limitation of comparing cities using absolute vacancy counts. A smaller market will naturally generate fewer observed postings, while differences in platform coverage may further affect the totals.<br><br>
+			<img src="/img/Sherbrooke_1.png" alt="job_market" width="800" height="600" class="responsive-logo"><br>
+			<b>4. Interpreting the Results</b><br><br>
+			Rather than examining every city individually, these examples illustrate an important methodological distinction between the volume of observed vacancies and the occupational composition of those vacancies.
+			Absolute counts should be interpreted cautiously because they depend on Adzuna's coverage and collection methodology, as well as my own sampling and data-cleaning procedures. Although duplicate records have been removed from my dataset, 
+				I cannot determine whether Adzuna captures all vacancies in a region or whether particular employers, platforms, industries, or occupations are systematically overrepresented or underrepresented.<br><br>
+				For this reason, category shares may provide a more useful basis for comparing the occupational composition of the observed job markets than absolute posting counts. However, category proportions are not immune to bias. Their comparability depends on an important assumption: missing, duplicated, or incorrectly classified postings must not disproportionately affect particular categories. 
+				This assumption cannot currently be verified and should therefore be treated as a limitation of the analysis.<br><br>
+			<b>5. Limitations and Opportunities for Improvement</b>
+			In the raw dataset, all required competencies and skills under each occupation are squeezed in “job description” as one feature. This limits the further exploration of the relationships between the occupation and competencies, which is especially important for discovering the change of competencies and skills demanded by occupations on job market in a timespan. 
+			Furthermore, educational institutions will have a clear map showing the gaps of the skills they supplied at school and those required on the job market. Therefore, a plan for the next step is to extract them by machine learning methods, such as Natural Language Processing (NLP).<br><br>
 			This post will be kept updating.<br><br>
 			2025.01.10 - Update PBI report page: add 2 charts and a drill through page<br>
 			2025.02.04 - Some job records are miscategorized by Adzuna, (I saw some education related jobs are categorized into IT), I will try to figure that out.<br><br>
